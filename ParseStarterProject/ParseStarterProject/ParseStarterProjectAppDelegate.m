@@ -8,9 +8,7 @@
  */
 
 #import <Parse/Parse.h>
-
-// If you want to use any of the UI components, uncomment this line
-// #import <ParseUI/ParseUI.h>
+#import <ParseUI/ParseUI.h>
 
 // If you are using Facebook, uncomment this line
 // #import <ParseFacebookUtils/PFFacebookUtils.h>
@@ -20,6 +18,8 @@
 
 #import "ParseStarterProjectAppDelegate.h"
 #import "ParseStarterProjectViewController.h"
+#import "ConversationsViewController.h"
+#import "MyLogInViewController.h"
 
 @implementation ParseStarterProjectAppDelegate
 
@@ -54,8 +54,27 @@
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
 
     // Override point for customization after application launch.
-
-    self.window.rootViewController = self.viewController;
+    
+    
+    UINavigationController *navVC = [[UINavigationController alloc] init];
+    if ([PFUser currentUser]) {
+        NSLog(@"Hello");
+        ParseStarterProjectViewController *loginVC = [[ParseStarterProjectViewController alloc] init];
+        [navVC setViewControllers:@[loginVC] animated:YES];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:LoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+            NSLog(@"Hello2");
+            ConversationsViewController *conVC = [[ConversationsViewController alloc] init];
+            [navVC setViewControllers:@[conVC] animated:YES];
+        }];
+    } else {
+        NSLog(@"Hello3");
+        ConversationsViewController *conVC = [[ConversationsViewController alloc] init];
+        [navVC setViewControllers:@[conVC] animated:YES];
+    }
+    self.window.rootViewController = navVC;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
     if (application.applicationState != UIApplicationStateBackground) {

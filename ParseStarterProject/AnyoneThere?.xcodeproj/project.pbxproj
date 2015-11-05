@@ -34,7 +34,6 @@
 		D48F53CB1BE93F70004885B9 /* ConversationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48F53C91BE93F70004885B9 /* ConversationsViewController.m */; };
 		D48F53CC1BE93F70004885B9 /* ConversationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D48F53CA1BE93F70004885B9 /* ConversationsViewController.xib */; };
 		D48F53CE1BE940C9004885B9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D48F53CD1BE940C9004885B9 /* settings.png */; };
-		D48F53D01BE9650E004885B9 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48F53CF1BE9650E004885B9 /* Storyboard.storyboard */; };
 		D48F53D31BE9BB8E004885B9 /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48F53D21BE9BB8E004885B9 /* MySignUpViewController.m */; };
 		D48F53D61BE9BF55004885B9 /* MyLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48F53D51BE9BF55004885B9 /* MyLogInViewController.m */; };
 		D4CD907F1BE2A91B00DBA657 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CD907E1BE2A91B00DBA657 /* ParseUI.framework */; };
@@ -81,7 +80,6 @@
 		D48F53C91BE93F70004885B9 /* ConversationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationsViewController.m; sourceTree = "<group>"; };
 		D48F53CA1BE93F70004885B9 /* ConversationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationsViewController.xib; sourceTree = "<group>"; };
 		D48F53CD1BE940C9004885B9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		D48F53CF1BE9650E004885B9 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		D48F53D11BE9BB8E004885B9 /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
 		D48F53D21BE9BB8E004885B9 /* MySignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySignUpViewController.m; sourceTree = "<group>"; };
 		D48F53D41BE9BF55004885B9 /* MyLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogInViewController.h; sourceTree = "<group>"; };
@@ -156,9 +154,8 @@
 				D4CD90801BE3F64600DBA657 /* Drawing.png */,
 				09ABC08013A1D52D009C3FCF /* ParseStarterProjectAppDelegate.h */,
 				09ABC08113A1D52D009C3FCF /* ParseStarterProjectAppDelegate.m */,
-				D48F53C61BE7D852004885B9 /* ParseStarterProjectViewController.xib */,
-				D48F53CF1BE9650E004885B9 /* Storyboard.storyboard */,
 				814C3AB71B69864600E307BB /* MainWindow.xib */,
+				D48F53C61BE7D852004885B9 /* ParseStarterProjectViewController.xib */,
 				D48F53C81BE93F70004885B9 /* ConversationsViewController.h */,
 				D48F53C91BE93F70004885B9 /* ConversationsViewController.m */,
 				D48F53CA1BE93F70004885B9 /* ConversationsViewController.xib */,
@@ -288,7 +285,6 @@
 				D48F53CE1BE940C9004885B9 /* settings.png in Resources */,
 				D4CD90811BE3F64600DBA657 /* Drawing.png in Resources */,
 				814C3AC01B69864600E307BB /* InfoPlist.strings in Resources */,
-				D48F53D01BE9650E004885B9 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +429,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				PRODUCT_NAME = "AnyoneThere?";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -451,6 +448,7 @@
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				PRODUCT_NAME = "AnyoneThere?";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

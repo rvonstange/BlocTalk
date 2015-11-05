@@ -14,23 +14,39 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exl-o8-cTg">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                    <items>
-                        <navigationItem title="Chats" id="yeB-in-Icy">
-                            <barButtonItem key="leftBarButtonItem" systemItem="edit" id="J8y-LF-YGb"/>
-                            <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lps-Y6-IGN">
-                                <connections>
-                                    <action selector="addNewChat:" destination="-1" id="CIz-cn-zSx"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="442" y="92"/>
         </view>
+        <viewController id="ssa-MX-Cyf" customClass="ConversationsViewController">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="qOx-H5-Ihv"/>
+                <viewControllerLayoutGuide type="bottom" id="dZk-ea-Cnk"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="hVQ-NS-atw">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dxG-Md-Xya">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <items>
+                            <navigationItem title="Chats" id="uf2-RA-s5N">
+                                <barButtonItem key="leftBarButtonItem" title="Item" id="IYy-67-1ks"/>
+                                <barButtonItem key="rightBarButtonItem" systemItem="add" id="8I6-04-eDS"/>
+                            </navigationItem>
+                        </items>
+                    </navigationBar>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="adgsufahsbdfgla" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-hp-p5v">
+                        <rect key="frame" x="126" y="164" width="178" height="105"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </view>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="320" height="460"/>
+            <point key="canvasLocation" x="530" y="-810"/>
+        </viewController>
     </objects>
 </document>

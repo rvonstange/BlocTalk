@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 Parse. All rights reserved.
 //
 
+#import <ParseUI/ParseUI.h>
+
 @interface MyLogInViewController : PFLogInViewController
+
+extern NSString *const LoginViewControllerDidGetAccessTokenNotification;
 
 @end
