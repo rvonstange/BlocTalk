@@ -63,9 +63,9 @@
         [navVC setViewControllers:@[loginVC] animated:YES];
         
         [[NSNotificationCenter defaultCenter] addObserverForName:LoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-            NSLog(@"Hello2");
             ConversationsViewController *conVC = [[ConversationsViewController alloc] init];
             [navVC setViewControllers:@[conVC] animated:YES];
+            NSLog(@"Hello2");
         }];
     } else {
         NSLog(@"Hello3");
@@ -107,6 +107,10 @@
     }
 
     return YES;
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
 }
 
 #pragma mark Push Notifications

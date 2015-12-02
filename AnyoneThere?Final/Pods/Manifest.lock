@@ -1,0 +1,27 @@
+PODS:
+  - Bolts/Tasks (1.4.0)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - Parse (1.9.1):
+    - Bolts/Tasks (>= 1.4.0)
+  - ParseUI (1.1.6):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
+  - TwilioSDK (1.2.6)
+
+DEPENDENCIES:
+  - JSQMessagesViewController
+  - Parse
+  - ParseUI
+  - TwilioSDK (~> 1.2)
+
+SPEC CHECKSUMS:
+  Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
+  ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
+  TwilioSDK: ec0221c0f819b6d3f54efb61f70013ddf4bd3974
+
+COCOAPODS: 0.39.0
