@@ -38,7 +38,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.otherUser.username;
+    if (![self.otherUser[@"displayName"]  isEqual: @""]) {
+        self.title = self.otherUser[@"displayName"];
+    }
+    else {
+        self.title = self.otherUser.username;
+    }
     self.senderId = self.currentUser.objectId;
     self.senderDisplayName = self.currentUser.username;
     JSQMessagesBubbleImageFactory *bubbleFactory = [JSQMessagesBubbleImageFactory new];
@@ -112,17 +117,15 @@
     JSQMessage *message = [JSQMessage messageWithSenderId:senderId
                                               displayName:senderDisplayName
                                                      text:text];
-    self.conversation[@"lastMessage"] = text;
-    NSLog(@"conversation:%@",self.conversation);
-    [self.conversation save];
     
     PFObject *messageForParse = [PFObject objectWithClassName:@"Messages"];
     messageForParse[@"messageSender"] = self.currentUser;
     messageForParse[@"message"] = text;
     messageForParse[@"convoID"] = self.conversation;
-    NSLog(@"conversation:%@",self.conversation);
+    //NSLog(@"conversation:%@",self.conversation);
     [messageForParse saveInBackgroundWithBlock:^(BOOL success, NSError* _error){
-        
+        //self.conversation[@"lastMessage"] = text;
+        //[self.conversation save];
     }];
 
 
@@ -163,7 +166,6 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"%lu",self.messages.count);
     return self.messages.count;
 }
 

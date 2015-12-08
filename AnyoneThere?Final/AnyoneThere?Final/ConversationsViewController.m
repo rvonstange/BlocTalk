@@ -37,10 +37,40 @@
                                                  name:@"NewMessage"
                                                object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadChats:)
+                                                 name:@"LoggedIn"
+                                               object:nil];
+
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"convo"];
     
     UINavigationController *navVC = [[UINavigationController alloc] init];
     self.navVC = navVC;
+    if ([PFUser currentUser]){
+        PFQuery* conQuery = [PFQuery queryWithClassName:@"Conversation"];
+        [conQuery whereKey:@"users" containsAllObjectsInArray:@[[PFUser currentUser]]];
+        self.conversations = [conQuery findObjects];
+    }
+    
+}
+
+-(void)receiveNewMessage:(NSNotification *) notification {
+    [self.tableView reloadData];
+}
+
+-(void)loadChats:(NSNotification *) notification {
+    PFQuery* conQuery = [PFQuery queryWithClassName:@"Conversation"];
+    [conQuery whereKey:@"users" containsAllObjectsInArray:@[[PFUser currentUser]]];
+    self.conversations = [conQuery findObjects];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if ([PFUser currentUser] == nil) { // No user logged in
         // Create the log in view controller
         MyLogInViewController *logInViewController = [[MyLogInViewController alloc] init];
@@ -56,26 +86,8 @@
         [logInViewController setSignUpController:signUpViewController];
         
         // Present the log in view controller
-        [self presentViewController:logInViewController animated:NO completion:NULL];
+        [self presentViewController:logInViewController animated:YES completion:NULL];
     }
-    else if ([PFUser currentUser]){
-        PFQuery* conQuery = [PFQuery queryWithClassName:@"Conversation"];
-        [conQuery whereKey:@"users" containsAllObjectsInArray:@[[PFUser currentUser]]];
-        self.conversations = [conQuery findObjects];
-    }
-}
-
--(void)receiveNewMessage:(NSNotification *) notification {
-    [self.tableView reloadData];
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self.tableView reloadData];
     
 }
@@ -159,7 +171,7 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:nil];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LoggedIn" object:self];
     
 }
 
@@ -175,6 +187,7 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
+    //[self.tableView reloadData];
 }
 
 #pragma mark - signUp
@@ -207,6 +220,7 @@
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the PFSignUpViewController
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LoggedIn" object:self];
 }
 
 // Sent to the delegate when the sign up attempt fails.

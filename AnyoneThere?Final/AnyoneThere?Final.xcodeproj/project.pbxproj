@@ -10,6 +10,7 @@
 		16DCBC665AB98A9EA54DAB15 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A22809B089558BE88CA014 /* libPods.a */; };
 		D46150951BFA891B00AAFECF /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46150941BFA891B00AAFECF /* UsersTableViewController.m */; };
 		D46150981BFB8C1100AAFECF /* NewChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46150971BFB8C1100AAFECF /* NewChatViewController.m */; };
+		D4623B561C101AF30041E9A2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4623B551C101AF30041E9A2 /* SettingsViewController.m */; };
 		D4E122D21BF2BC5B00D46135 /* MySignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E122CF1BF2BC5B00D46135 /* MySignUpViewController.m */; };
 		D4E122D31BF2BC5B00D46135 /* MyLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E122D11BF2BC5B00D46135 /* MyLogInViewController.m */; };
 		D4E122D61BF2BF1D00D46135 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E122D41BF2BF1D00D46135 /* settings.png */; };
@@ -50,6 +51,8 @@
 		D46150941BFA891B00AAFECF /* UsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersTableViewController.m; sourceTree = "<group>"; };
 		D46150961BFB8C1100AAFECF /* NewChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewChatViewController.h; sourceTree = "<group>"; };
 		D46150971BFB8C1100AAFECF /* NewChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewChatViewController.m; sourceTree = "<group>"; };
+		D4623B541C101AF30041E9A2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D4623B551C101AF30041E9A2 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D4E122CE1BF2BC5B00D46135 /* MySignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySignUpViewController.h; sourceTree = "<group>"; };
 		D4E122CF1BF2BC5B00D46135 /* MySignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySignUpViewController.m; sourceTree = "<group>"; };
 		D4E122D01BF2BC5B00D46135 /* MyLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogInViewController.h; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 				D46150941BFA891B00AAFECF /* UsersTableViewController.m */,
 				D46150961BFB8C1100AAFECF /* NewChatViewController.h */,
 				D46150971BFB8C1100AAFECF /* NewChatViewController.m */,
+				D4623B541C101AF30041E9A2 /* SettingsViewController.h */,
+				D4623B551C101AF30041E9A2 /* SettingsViewController.m */,
 				D4F9877C1BF2BA340045B9BB /* ViewController.h */,
 				D4F9877D1BF2BA340045B9BB /* ViewController.m */,
 				D4E122D81BF2C16800D46135 /* ConversationsViewController.h */,
@@ -381,6 +386,7 @@
 				D4F9877E1BF2BA340045B9BB /* ViewController.m in Sources */,
 				D4F9877B1BF2BA340045B9BB /* AppDelegate.m in Sources */,
 				D46150951BFA891B00AAFECF /* UsersTableViewController.m in Sources */,
+				D4623B561C101AF30041E9A2 /* SettingsViewController.m in Sources */,
 				D46150981BFB8C1100AAFECF /* NewChatViewController.m in Sources */,
 				D4E122D21BF2BC5B00D46135 /* MySignUpViewController.m in Sources */,
 				D4E122DA1BF2C16800D46135 /* ConversationsViewController.m in Sources */,
