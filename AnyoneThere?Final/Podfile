@@ -1,4 +1,5 @@
 pod 'TwilioSDK', '~>1.2'
 pod 'Parse'
 pod 'ParseUI'
-pod 'JSQMessagesViewController'  
+pod 'JSQMessagesViewController'
+pod 'CRToast', '~> 0.0.7'

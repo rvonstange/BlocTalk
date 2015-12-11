@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="414" y="-421"/>
         </scene>
-        <!--Nearby Users-->
+        <!--Start a New Chat-->
         <scene sceneID="kSH-S1-5UF">
             <objects>
                 <tableViewController id="6zn-35-yuf" customClass="UsersTableViewController" sceneMemberID="viewController">
@@ -46,8 +46,13 @@
                             <outlet property="delegate" destination="6zn-35-yuf" id="aWf-y5-0jZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Nearby Users" id="gSn-XW-NTy">
+                    <navigationItem key="navigationItem" title="Start a New Chat" id="gSn-XW-NTy">
                         <barButtonItem key="backBarButtonItem" title="Back" id="qJZ-ty-ZQp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Nearby" id="SWh-Zl-a9u">
+                            <connections>
+                                <action selector="browseForDevices:" destination="6zn-35-yuf" id="lmd-6F-yaB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
@@ -143,7 +148,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rpZ-7r-iIt">
-                                <rect key="frame" x="257" y="290" width="98" height="30"/>
+                                <rect key="frame" x="257" y="340" width="98" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -159,7 +164,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-JM-sWK">
-                                <rect key="frame" x="151" y="290" width="98" height="30"/>
+                                <rect key="frame" x="151" y="340" width="98" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -174,6 +179,18 @@
                                     <action selector="logout:" destination="C02-mt-w5S" eventType="touchUpInside" id="tOG-fV-NAi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Yourself:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evw-Fc-pke">
+                                <rect key="frame" x="46" y="265" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HR6-zQ-QxG">
+                                <rect key="frame" x="222" y="260" width="51" height="31"/>
+                                <connections>
+                                    <action selector="toggleVisibility:" destination="C02-mt-w5S" eventType="valueChanged" id="2pT-zg-13W"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -184,6 +201,7 @@
                         <outlet property="confirmPass" destination="U6I-Ty-ssq" id="zDf-kV-FsU"/>
                         <outlet property="displayName" destination="oNo-bK-lJe" id="10q-LU-hrb"/>
                         <outlet property="password" destination="h04-9l-KUP" id="s9A-UI-SzL"/>
+                        <outlet property="swVisible" destination="HR6-zQ-QxG" id="x8h-Gi-vE4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khY-72-gKv" userLabel="First Responder" sceneMemberID="firstResponder"/>

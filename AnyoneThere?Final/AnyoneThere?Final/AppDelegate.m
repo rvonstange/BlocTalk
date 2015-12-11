@@ -28,10 +28,12 @@
 
 @implementation AppDelegate
 
-#pragma mark -
 #pragma mark UIApplicationDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //create the MC Manager for global use
+    _mcManager = [[MCManager alloc] init];
+    
     // Enable storing and querying data from Local Datastore. Remove this line if you don't want to
     // use Local Datastore features or want to use cachePolicy.
     [Parse enableLocalDatastore];

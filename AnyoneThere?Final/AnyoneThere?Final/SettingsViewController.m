@@ -10,11 +10,15 @@
 #import <ParseUI/ParseUI.h>
 #import <Parse/Parse.h>
 #import "ConversationsViewController.h"
+#import "AppDelegate.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *displayName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPass;
+
+@property (nonatomic, strong) AppDelegate *appDelegate;
+
 
 @end
 
@@ -37,6 +41,10 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 
+}
+
+- (IBAction)toggleVisibility:(id)sender{
+    [_appDelegate.mcManager advertiseSelf:_swVisible.isOn];
 }
 
 - (void)viewDidLoad {

@@ -10,4 +10,8 @@
 
 @interface SettingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISwitch *swVisible;
+
+- (IBAction)toggleVisibility:(id)sender;
+
 @end

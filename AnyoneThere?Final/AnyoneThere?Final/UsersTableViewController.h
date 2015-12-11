@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
 
-@interface UsersTableViewController : UITableViewController //<UITableViewDelegate>
+@interface UsersTableViewController : UITableViewController <MCBrowserViewControllerDelegate>//<UITableViewDelegate>
 
 @end

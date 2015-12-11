@@ -86,7 +86,7 @@
         [logInViewController setSignUpController:signUpViewController];
         
         // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
+        [self presentViewController:logInViewController animated:NO completion:NULL];
     }
     [self.tableView reloadData];
     

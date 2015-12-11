@@ -7,6 +7,7 @@
 //
 
 #import "NewChatViewController.h"
+#import "CRToast.h"
 
 @interface NewChatViewController ()
 
@@ -55,27 +56,45 @@
     //Create new array for messages to be stored locally
     self.messages = [NSMutableArray array];
     
-    PFQuery* convoQuery = [PFQuery queryWithClassName:@"Conversation"];
-    [convoQuery whereKey:@"users" containsAllObjectsInArray:@[self.currentUser,self.otherUser]];
-    //If the two users have already spoken before we will enter the if statement
-    if (convoQuery.countObjects != 0) {
-        //For now I am going to only allow two users to speak but later inside here we can make it work for groups
-        self.conversation = [convoQuery findObjects][0];
-        PFQuery* messageQuery = [PFQuery queryWithClassName:@"Messages"];
-        [messageQuery whereKey:@"convoID" equalTo:self.conversation];
-        for (PFObject* message in [messageQuery findObjects]){
-            PFUser* user = message[@"messageSender"];
-            JSQMessage* temp = [JSQMessage messageWithSenderId:user.objectId displayName:user.username text:message[@"message"]];
-            [self.messages addObject:temp];
+    if (!_localChat) {
+        PFQuery* convoQuery = [PFQuery queryWithClassName:@"Conversation"];
+        [convoQuery whereKey:@"users" containsAllObjectsInArray:@[self.currentUser,self.otherUser]];
+        //If the two users have already spoken before we will enter the if statement
+        if (convoQuery.countObjects != 0) {
+            //For now I am going to only allow two users to speak but later inside here we can make it work for groups
+            self.conversation = [convoQuery findObjects][0];
+            PFQuery* messageQuery = [PFQuery queryWithClassName:@"Messages"];
+            [messageQuery whereKey:@"convoID" equalTo:self.conversation];
+            for (PFObject* message in [messageQuery findObjects]){
+                PFUser* user = message[@"messageSender"];
+                JSQMessage* temp = [JSQMessage messageWithSenderId:user.objectId displayName:user.username text:message[@"message"]];
+                [self.messages addObject:temp];
+            }
+        }
+        else if (convoQuery.countObjects == 0) {
+            NSLog(@"I started a new conversation");
+            //Create a new conversation for Parse
+            self.conversation = [PFObject objectWithClassName:@"Conversation"];
+            self.conversation[@"users"] = @[self.currentUser,self.otherUser];
+            //self.conversation.ACL
+            [self.conversation saveInBackground];
         }
     }
-    else if (convoQuery.countObjects == 0) {
-        NSLog(@"I started a new conversation");
-        //Create a new conversation for Parse
-        self.conversation = [PFObject objectWithClassName:@"Conversation"];
-        self.conversation[@"users"] = @[self.currentUser,self.otherUser];
-        //self.conversation.ACL
-        [self.conversation saveInBackground];
+    else {
+        NSDictionary *options = @{
+                                  kCRToastTextKey : @"In a Local Chat your messages will not be saved!",
+                                  kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                                  kCRToastBackgroundColorKey : [UIColor redColor],
+                                  kCRToastTimeIntervalKey : @3,
+                                  kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
+                                  kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
+                                  kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionLeft),
+                                  kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionRight)
+                                  };
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{
+                                        NSLog(@"Completed");
+                                    }];
     }
 }
 
@@ -118,23 +137,25 @@
                                               displayName:senderDisplayName
                                                      text:text];
     
-    PFObject *messageForParse = [PFObject objectWithClassName:@"Messages"];
-    messageForParse[@"messageSender"] = self.currentUser;
-    messageForParse[@"message"] = text;
-    messageForParse[@"convoID"] = self.conversation;
-    //NSLog(@"conversation:%@",self.conversation);
-    [messageForParse saveInBackgroundWithBlock:^(BOOL success, NSError* _error){
-        //self.conversation[@"lastMessage"] = text;
-        //[self.conversation save];
-    }];
+    if (!_localChat) {
+        PFObject *messageForParse = [PFObject objectWithClassName:@"Messages"];
+        messageForParse[@"messageSender"] = self.currentUser;
+        messageForParse[@"message"] = text;
+        messageForParse[@"convoID"] = self.conversation;
+        //NSLog(@"conversation:%@",self.conversation);
+        [messageForParse saveInBackgroundWithBlock:^(BOOL success, NSError* _error){
+            //self.conversation[@"lastMessage"] = text;
+            //[self.conversation save];
+        }];
+        
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NewMessage" object:self];
+    }
 
-
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NewMessage" object:self];
-    
     [self.messages addObject:message];
     [self finishSendingMessageAnimated:YES];
-    [self receiveAutoMessage];
+    //[self receiveAutoMessage];
 }
 
 #pragma mark - JSQMessagesCollectionViewDataSource

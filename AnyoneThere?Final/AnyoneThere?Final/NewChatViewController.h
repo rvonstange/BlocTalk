@@ -16,5 +16,7 @@
 
 @property (strong, nonatomic) PFUser* currentUser;
 @property (strong, nonatomic) PFUser* otherUser;
+@property (assign, nonatomic) BOOL localChat;
+
 
 @end
